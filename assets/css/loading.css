@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+/* ローディング */
+
+@keyframes sk-scaleout {
+  0% {
+      transform: scale(0);
+  } 100% {
+      transform: scale(1.0);
+      opacity: 0;
+  }
+}
+
+
+#loading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  
+  background-color: white;
+}
+
+.spinner {
+  /* position: absolute; */
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 180px;
+  margin: 200px auto;
+  background-color: #fff;
+  border-radius: 100%;
+  /* animation: sk-scaleout 1.0s infinite ease-in-out; */
+}
+
+.loaded {
+  display: none;
+}

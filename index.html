@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Pipetalk(パイプトーク）はオンラインのメンバーと気軽に連絡・相談ができるテレワークのチームコミュニケーション改善アプリです。テレワークでもオフィスにいるのと同じようにコミュニケーション活性化や業務効率化を実現するオフィス環境再現ツールになります。">
+        <title>PIPETALK</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico">
+
+        <!-- css -->
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="stylesheet" href="./assets/css/loading.css">
+
+        <script src="./libs/jquery-3.4.1.min.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="wrap wrap-1012">
+                <div class="site-header">
+                    <h1 class="logo">
+                        <img src="./assets/image/logo.png" alt="" />
+                    </h1>
+                    <div class="site-menu">
+                        <a id="btn-use-now" class="btn-pipe-talk btn-red btn-header" href="https://web.pipe-talk.com/register" onclick="ga('send','event','banner','click','register', 1);"><span>今すぐ使う(β版)</span></a>
+                        <a id="btn-login" class="btn-pipe-talk btn-hover-white btn-header" href="https://web.pipe-talk.com/" onclick="ga('send','event','banner','click','login', 1);"><span>ログイン</span></a>
+                    </div>
+                </div>
+                <div class="headline"><span>【テレワーク推進】</span> 新型コロナウィルス対策支援として、無期限での無償提供を開始</div>
+            </div>
+        </header>
+
+        <section id="main-visual" class="main-visual">
+            <div class="mv-blue-bg"></div>
+            <div class="mv-lead">
+                <p class="mv-lead-title">チャット以上　リアル未満</p>
+                <div class="mv-lead-figure">
+                    <img src="./assets/image/logo.png" alt="" />
+                </div>
+                <p class="mv-lead-txt">オンラインのメンバーと気軽に連絡・相談ができるテレワークのチームコミュニケーション改善アプリ</p>
+                <div class="mv-lead-laptop">
+                    <img src="./assets/image/mv-laptop.png" alt="" />
+                    <div class="mv-movie-wrapper">
+                        <img id="mv-movie-gif" src="./assets/image/mv-movie.gif" alt="" />
+                        <div id="mv-movie-load-wrapper" class="mv-movie-load-wrapper">
+                            <img id="mv-movie-load-gif" src="./assets/image/loading.gif" alt="" />                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mv-people-left">
+                    <img src="./assets/image/people-left.png" alt="" />
+                </div>
+                <div class="mv-people-right">
+                    <img src="./assets/image/people-right.png" alt="" />
+                </div>
+                <div class="element-l-01">
+                    <img src="./assets/image/element-l-01.png" alt="" />
+                </div>
+                <div class="element-l-02">
+                    <img src="./assets/image/element-l-02.png" alt="" />
+                </div>
+                <div class="element-r-01">
+                    <img src="./assets/image/element-r-01.png" alt="" />
+                </div>
+                <div class="element-r-02">
+                    <img src="./assets/image/element-r-02.png" alt="" />
+                </div>
+            </div>
+        </section>
+
+        <section id="cta-lead-01" class="cta-lead">
+            <div class="wrap wrap-1012">
+                <p class="cta-lead-01-txt">テレワークでもオフィスにいるのと同じように<br>仲間と気軽に会話をしたり、画面を見せたりできる<br>オフィス環境再現ツール</p>
+                <a href="https://web.pipe-talk.com/register" class="btn-circle btn-red" onclick="ga('send','event','banner','click','register', 1);">今すぐ使う<span>(β版)</span><i></i></a>
+            </div>
+        </section>
+
+        <section id="issue-task" class="issue-task issue-task-2">
+            <div class="wrap wrap-944">
+                <h3 class="sec-title">テレワークの問題点・課題</h3>
+
+                <div class="issue-task-list">
+                    <div class="issue-task-row">
+                        <div class="issue-task-col-l">
+                            <h4 class="issue-task-title"><span>オンライン会議の</span><span>調整が面倒</span></h4>
+                            <div class="issue-task-txt-figure-l">
+                                <img src="./assets/image/issue-task-l-01.png" alt="" />
+                            </div>
+                            <p class="issue-task-txt">メンバーのスケジュールを事前に確認して会議の招待を送るのは毎回手間がかかり、気軽な相談や質問、雑談などがしにくい・・・</p>
+                        </div>
+                    </div> <!-- オンライン会議の調整が面倒 -->
+                    <div class="issue-task-row">
+                        <div class="issue-task-col-l">
+                            <h4 class="issue-task-title">チャットではうまく意思疎通ができない</h4>
+                            <div class="issue-task-txt-figure-l">
+                                <img src="./assets/image/issue-task-l-02.png" alt="" />
+                            </div>
+                            <p class="issue-task-txt">やりとりがチャット中心になってしまいがちなテレワークでは、意思疎通がうまくできずに細かいニュアンスが伝わらない・・・</p>
+                        </div>
+                    </div> <!-- お互いの画面を見せあいながらの会話で解決 -->
+                    <div class="issue-task-row">
+                        <div class="issue-task-col-l">
+                            <h4 class="issue-task-title">雑談やアイデアが生まれない</h4>
+                            <div class="issue-task-txt-figure-l">
+                                <img src="./assets/image/issue-task-l-03.png" alt="" />
+                            </div>
+                            <p class="issue-task-txt">日々の雑談は、新しいアイデアの創出やメンバーのリフレッシュとなるが、時間調整されたオンライン会議では、気軽に思いついた瞬間に会話がしにくい・・・</p>
+                        </div>
+                    </div> <!-- お互いの画面を見せあいながらの会話で解決 -->
+                </div>
+            </div>
+        </section>
+
+        <section id="comm-style" class="comm-style">
+            <div class="wrap wrap-1012">
+                <div class="comm-style-part-01">
+                    <div class="comm-style-arrow">
+                        <img src="./assets/image/comm-style-arrow.png" alt="" />
+                    </div>
+                    <p class="comm-style-title">Pipetalkで<br class="br-480">新しいコミュニケーションスタイルを</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="feature" class="feature feature-3">
+            <div class="wrap wrap-944">
+                <h3 class="sec-title">Pipetalkの機能</h3>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-figure">
+                            <img src="./assets/image/feature-01.gif" alt="" />
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-title">ワンクリックでチームメンバーと会話開始</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-figure">
+                            <img src="./assets/image/feature-02.gif" alt="" />
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-title">画面共有もワンクリックで</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-figure">
+                            <img src="./assets/image/feature-03.gif" alt="" />
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-title">エモーティコン機能を使ってノック可能</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-figure">
+                            <img src="./assets/image/feature-04.gif" alt="" />
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-title">チームの配置を自由に変えて音量調整</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-figure">
+                            <img src="./assets/image/feature-05.gif" alt="" />
+                        </div>
+                        <div class="feature-info">
+                            <p class="feature-title">会話内容はテキストで残すことも</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta-lead-03" class="cta-lead cta-lead-red">
+            <div class="wrap wrap-1012">
+                <p class="cta-lead-red-txt">企業の新型コロナウィルス対策支援、<br class="br-480">そしてテレワーク推進のため、<span>無期限無償提供中</span></p>
+                <a href="https://web.pipe-talk.com/register" class="btn-circle btn-red" onclick="ga('send','event','banner','click','register', 1);">今すぐ使う<span>(β版)</span><i></i></a>
+            </div>
+        </section>
+
+        <section id="characteristic" class="characteristic">
+            <div class="wrap wrap-944">
+                <h3 class="sec-title">Pipetalkの特徴</h3>
+
+                <div class="charact-list">
+                    <div class="charact-item">
+                        <div class="charact-figure">
+                            <img src="./assets/image/charact-01.png" alt="" />
+                        </div>
+                        <p class="charact-txt">リモートでもリアルと同じような<br>気軽なコミュニケーションが可能</p>
+                    </div>
+                    <div class="charact-item">
+                        <div class="charact-figure">
+                            <img src="./assets/image/charact-02.png" alt="" />
+                        </div>
+                        <p class="charact-txt">面倒な日程調整なしで、思った時に<br>すぐに会話をスタート</p>
+                    </div>
+                    <div class="charact-item">
+                        <div class="charact-figure">
+                            <img src="./assets/image/charact-03.png" alt="" />
+                        </div>
+                        <p class="charact-txt">リモートメンバーもオフィスと<br>変わらないパフォーマンスを</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="wrap wrap-944">
+                <div class="footer-logo"><img src="./assets/image/logo.png" alt=""></div>
+                <div class="footer-content">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="https://ernie.co.jp/"><span>運営会社</li>
+                            <li><a href="#"><span>利用規約</span></a></li>
+                            <li><a href="#"><span>プライバシーポリシー</span></a></li>
+                        </ul>
+                    </div>
+                    <p class="copyright">copyright &copy; Pipetalk. all rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <div id="loading" style="display: none;">
+            <div class="spinner">
+                <img src="./assets/image/loading.gif" alt="" />
+            </div>
+        </div>
+    </body>
+
+    <script src="./assets/js/script.js"></script>
+</html>

@@ -101,7 +101,8 @@ function parseChatForksText(forkText) {
         }
     });
 
-    return analyzeChatForks(lines, 0, -1);
+    let forks = analyzeChatForks(lines, 0, -1);
+    return forks.forkNode;
 }
 
 /**

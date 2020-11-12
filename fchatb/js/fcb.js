@@ -79,7 +79,7 @@ function openFCB(isPerspective) {
                                 <!-- <img class="avatar" src="https://placeimg.com/64/64/2"> -->
                             </div>
                         </div>
-                        <button class="md-close">Close me!</button>`;
+                        <button class="md-close">閉じる</button>`;
             }
         }
     }
@@ -146,7 +146,7 @@ function openFCB(isPerspective) {
 
     function disableAllOptions() {
         $(".msg-option").addClass("disabled");
-        $(".msg-option.disabled").off('click');
+        $(".msg-option.disabled").prop('disabled', true);
     }
 
     if (isPerspective) {
@@ -164,4 +164,9 @@ function openFCB(isPerspective) {
             });
         });
     }
+
+    $('.md-content h3 > span')[0].addEventListener( 'click', function( ev ) {
+        ev.stopPropagation();
+        removeModalHandler();
+    });
 }

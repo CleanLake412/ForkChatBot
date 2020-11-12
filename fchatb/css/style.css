@@ -106,12 +106,21 @@ perspective effects (not including the modals and the overlay).
     border: none;
     padding: 0.3em 1.2em;
     background: #fbe5d6;
-    color: #666666;
+    color: #444444;
     letter-spacing: 1px;
     cursor: pointer;
     margin: 5px 0;
     width: 100%;
     border-radius: 5px;
+}
+
+.md-content h3 > span {
+    cursor: pointer;
+}
+
+.md-content button.msg-option.disabled {
+    background: #fff1e7;
+    color: #cccccc;
 }
 
 .md-content div.bot-msg, .md-content div.customer-msg {

@@ -30,7 +30,6 @@ perspective effects (not including the modals and the overlay).
     width: 50%;
     max-width: 630px;
     min-width: 320px;
-    height: auto;
     z-index: 2000;
     visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -40,6 +39,7 @@ perspective effects (not including the modals and the overlay).
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+    overflow: hidden;
 }
 
 .md-show {
@@ -69,7 +69,7 @@ perspective effects (not including the modals and the overlay).
 /* Content styles */
 .md-content {
     color: #fff;
-    background: #e74c3c;
+    background: #e4eef8;
     position: relative;
     border-radius: 3px;
     margin: 0 auto;
@@ -77,40 +77,91 @@ perspective effects (not including the modals and the overlay).
 
 .md-content h3 {
     margin: 0;
-    padding: 0.4em;
-    text-align: center;
-    font-size: 2.4em;
+    padding: 0.6em;
+    text-align: left;
+    font-size: 1.2em;
     font-weight: 300;
-    opacity: 0.8;
-    background: rgba(0,0,0,0.1);
+    background: rgba(31,78,121);
     border-radius: 3px 3px 0 0;
 }
 
 .md-content > div {
-    padding: 15px 40px 30px;
+    padding: 15px 15px 15px;
     margin: 0;
     font-weight: 300;
-    font-size: 1.15em;
+    font-size: 1.1em;
+    color: #333333;
+    overflow-y: scroll;
+    height: 60vh;
+    min-height: 200px;
+    max-height: 400px;
 }
 
 .md-content > div p {
-    margin: 0;
-    padding: 10px 0;
-}
-
-.md-content > div ul {
-    margin: 0;
-    padding: 0 0 30px 20px;
-}
-
-.md-content > div ul li {
+    line-height: 1.2em;
     padding: 5px 0;
+}
+
+.md-content button.msg-option {
+    border: none;
+    padding: 0.3em 1.2em;
+    background: #fbe5d6;
+    color: #666666;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.md-content div.bot-msg, .md-content div.customer-msg {
+    padding: 10px;
+}
+
+.md-content .avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
 }
 
 .md-content button {
     display: block;
     margin: 0 auto;
     font-size: 0.8em;
+}
+
+.md-content div.msg-brd {
+    line-height: 80%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+    max-width: 400px;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.justify-content-flex-end {
+    justify-content: flex-end;
+}
+
+.md-content div.lead-triangle-left, .md-content div.lead-triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 15px solid transparent;
+    margin-top: 10px;
+}
+
+.md-content div.lead-triangle-left {
+    border-right: 10px solid white;
+    margin-left: 5px;
+}
+
+.md-content div.lead-triangle-right {
+    border-left: 10px solid white;
+    margin-right: 5px;
 }
 
 .md-close {

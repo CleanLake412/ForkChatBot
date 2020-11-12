@@ -190,6 +190,3 @@ function countHeadSpace(lineText) {
     }
     return lineText.length;
 }
-
-let forks = parseChatForksText(forkText1);
-console.log(forks);

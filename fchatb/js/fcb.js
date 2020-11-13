@@ -3,13 +3,13 @@ function openFCB(isPerspective) {
 
     var modal = $('#modal-1'),
         close = $('.md-close'),
-        overlay = $( '.md-overlay' )[0];
+        overlay = $('.md-overlay')[0];
 
     var jsonData = parseChatForksText(forkText1);
 
-    function createOptionList( data ) {
+    function createOptionList(data) {
         var optionList = '';
-        data.forEach(function(item) {
+        data.forEach(function (item) {
             optionList += `<button class="msg-option">` + item.title + `</button>`;
         })
 
@@ -18,11 +18,11 @@ function openFCB(isPerspective) {
 
     var childData = undefined;
     var hasChild = false;
-    function createBotQuestion( selected = '' ) {
+    function createBotQuestion(selected = '') {
         if (selected == '') {
             childData = jsonData.children;
             hasChild = Array.isArray(childData) && childData.length > 0;
-            return `<div class="bot-msg" style="padding: 10px;">
+            return `<div class="bot-msg new-msg" style="padding: 10px;">
                         <div class="display-flex">
                             <img class="avatar" src="https://placeimg.com/64/64/1">
                             <div class="display-flex">
@@ -35,7 +35,7 @@ function openFCB(isPerspective) {
                     </div>`;
         } else {
             var data;
-            childData.forEach(function(item) {
+            childData.forEach(function (item) {
                 if (item.title == selected) {
                     data = item;
                 }
@@ -45,7 +45,7 @@ function openFCB(isPerspective) {
             if (hasChild) {
                 childData = data.children;
                 hasChild = Array.isArray(childData) && childData.length > 0;
-                return [`<div class="customer-msg">
+                return [`<div class="customer-msg new-msg">
                             <div class="display-flex justify-content-flex-end">
                                 <div class="display-flex">
                                     <div class="msg-brd">
@@ -53,10 +53,10 @@ function openFCB(isPerspective) {
                                     </div>
                                     <div class="lead-triangle-right"></div>
                                 </div>
-                                <!-- <img class="avatar" src="https://placeimg.com/64/64/2"> -->
+                                <img class="avatar" src="https://placeimg.com/64/64/2">
                             </div>
                         </div>`,
-                        `<div class="bot-msg" style="padding: 10px;">
+                `<div class="bot-msg new-msg" style="padding: 10px;">
                             <div class="display-flex">
                                 <img class="avatar" src="https://placeimg.com/64/64/1">
                                 <div class="display-flex">
@@ -68,7 +68,7 @@ function openFCB(isPerspective) {
                             </div>
                         </div>`];
             } else {
-                return `<div class="customer-msg">
+                return `<div class="customer-msg new-msg">
                             <div class="display-flex justify-content-flex-end">
                                 <div class="display-flex">
                                     <div class="msg-brd">
@@ -76,10 +76,13 @@ function openFCB(isPerspective) {
                                     </div>
                                     <div class="lead-triangle-right"></div>
                                 </div>
-                                <!-- <img class="avatar" src="https://placeimg.com/64/64/2"> -->
+                                <img class="avatar" src="https://placeimg.com/64/64/2">
                             </div>
                         </div>
-                        <button class="md-close">閉じる</button>`;
+                        <div class="bottom-button-area">
+                            <button class="md-refresh">もう一度最初から選択する</button>
+                            <button class="md-close">閉じる</button>
+                        </div>`;
             }
         }
     }
@@ -99,50 +102,65 @@ function openFCB(isPerspective) {
         var botQuestion = createBotQuestion(option);
 
         if (Array.isArray(botQuestion)) {
-            await asyncForEach(botQuestion, async function(question) {
+            await asyncForEach(botQuestion, async function (question) {
                 await sleep(500);
-                $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html() + question);
+                $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + question);
                 $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
             });
         } else {
             await sleep(500);
-            $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html() + botQuestion);
+            $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + botQuestion);
             $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
         }
 
         var options = $('button.msg-option:not(.disabled)');
         if (options) {
-            options.each(function() {
-                $(this).click(function( ev ) {
+            options.each(function () {
+                $(this).click(function (ev) {
                     selectOption(ev.target.innerText);
                 });
             });
         }
 
+        refresh = $('.md-refresh');
+        if (refresh[0]) {
+            refresh[0].addEventListener('click', function (ev) {
+                $('.md-modal .md-content > div').html(createBotQuestion());
+                var options = $('button.msg-option');
+                if (options) {
+                    options.each(function () {
+                        $(this).click(function (ev) {
+                            selectOption(ev.target.innerText);
+                        });
+                    });
+                }
+            });
+        }
+
         close = $('.md-close');
         if (close[0]) {
-            close[0].addEventListener( 'click', function( ev ) {
+            close[0].addEventListener('click', function (ev) {
                 ev.stopPropagation();
                 removeModalHandler();
             });
         }
     }
 
-    function removeModal( hasPerspective ) {
-        modal.removeClass('md-show' );
+    function removeModal(hasPerspective) {
+        modal.removeClass('md-show');
 
-        if( hasPerspective ) {
-            $(document.documentElement).removeClass( 'md-perspective' );
+        if (hasPerspective) {
+            $(document.documentElement).removeClass('md-perspective');
         }
     }
 
     function removeModalHandler() {
-        removeModal( isPerspective );
+        removeModal(isPerspective);
     }
 
-    modal.addClass( 'md-show' );
-    overlay.removeEventListener( 'click', removeModalHandler );
-    overlay.addEventListener( 'click', removeModalHandler );
+    modal.addClass('md-show');
+    overlay.removeEventListener('click', removeModalHandler);
+    overlay.addEventListener('click', removeModalHandler);
 
     function disableAllOptions() {
         $(".msg-option").addClass("disabled");
@@ -150,22 +168,22 @@ function openFCB(isPerspective) {
     }
 
     if (isPerspective) {
-        setTimeout( function() {
-            $(document.documentElement).addClass( 'md-perspective' );
-        }, 25 );
+        setTimeout(function () {
+            $(document.documentElement).addClass('md-perspective');
+        }, 25);
     }
 
     $('.md-modal .md-content > div').html(createBotQuestion());
     var options = $('button.msg-option');
     if (options) {
-        options.each(function() {
-            $(this).click(function( ev ) {
+        options.each(function () {
+            $(this).click(function (ev) {
                 selectOption(ev.target.innerText);
             });
         });
     }
 
-    $('.md-content h3 > span')[0].addEventListener( 'click', function( ev ) {
+    $('.md-content h3 > span')[0].addEventListener('click', function (ev) {
         ev.stopPropagation();
         removeModalHandler();
     });

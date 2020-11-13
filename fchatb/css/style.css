@@ -127,6 +127,19 @@ perspective effects (not including the modals and the overlay).
     padding: 10px;
 }
 
+.new-msg {
+    animation: chat-appear 1s;
+}
+
+@keyframes chat-appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .md-content .avatar {
     height: 40px;
     width: 40px;
@@ -135,7 +148,6 @@ perspective effects (not including the modals and the overlay).
 
 .md-content button {
     display: block;
-    margin: 0 auto;
     font-size: 0.8em;
 }
 
@@ -173,7 +185,7 @@ perspective effects (not including the modals and the overlay).
     margin-right: 5px;
 }
 
-.md-close {
+.md-close, .md-refresh {
     border: none;
     padding: 0.6em 1.2em;
     background: #2b8cc0;
@@ -186,6 +198,27 @@ perspective effects (not including the modals and the overlay).
     display: inline-block;
     margin: 3px 2px;
     border-radius: 2px;
+}
+
+.md-refresh {
+    background: #6c2bc0;
+}
+
+@media only screen and (min-width: 768px) {
+    div.bottom-button-area {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    div.bottom-button-area button {
+        width: 100%;
+    }
+
+    div.bottom-button-area button.md-refresh {
+        margin-bottom: 10px;
+    }
 }
 
 /* Individual modal styles with animations/transitions */

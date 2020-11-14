@@ -27,9 +27,9 @@ perspective effects (not including the modals and the overlay).
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 50%;
-    max-width: 630px;
+    width: 70%;
     min-width: 320px;
+    max-width: 800px;
     z-index: 2000;
     visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -89,22 +89,21 @@ perspective effects (not including the modals and the overlay).
     padding: 15px 15px 15px;
     margin: 0;
     font-weight: 300;
-    font-size: 1.1em;
+    font-size: 0.9em;
     color: #333333;
     overflow-y: scroll;
-    height: 60vh;
+    height: 80vh;
     min-height: 200px;
-    max-height: 400px;
 }
 
 .md-content > div p {
-    line-height: 1.2em;
+    line-height: 1.3em;
     padding: 5px 0;
 }
 
 .md-content button.msg-option {
     border: none;
-    padding: 0.3em 1.2em;
+    padding: 0.6em 1.2em;
     background: #fbe5d6;
     color: #444444;
     letter-spacing: 1px;
@@ -155,8 +154,8 @@ perspective effects (not including the modals and the overlay).
     line-height: 80%;
     border-radius: 10px;
     background-color: white;
-    padding: 20px;
-    max-width: 400px;
+    padding: 15px;
+    max-width: 500px;
 }
 
 .display-flex {
@@ -187,7 +186,7 @@ perspective effects (not including the modals and the overlay).
 
 .md-close, .md-refresh {
     border: none;
-    padding: 0.6em 1.2em;
+    padding: 1em 1.5em;
     background: #2b8cc0;
     color: #fff;
     font-family: 'Lato', Calibri, Arial, sans-serif;
@@ -204,6 +203,10 @@ perspective effects (not including the modals and the overlay).
     background: #6c2bc0;
 }
 
+div.bottom-button-area {
+    margin: 20px 0;
+}
+
 @media only screen and (min-width: 768px) {
     div.bottom-button-area {
         display: flex;
@@ -217,7 +220,7 @@ perspective effects (not including the modals and the overlay).
     }
 
     div.bottom-button-area button.md-refresh {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 }
 

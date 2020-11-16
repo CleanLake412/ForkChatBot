@@ -24,7 +24,7 @@ function openFCB(isPerspective) {
             hasChild = Array.isArray(childData) && childData.length > 0;
             return `<div class="bot-msg new-msg" style="padding: 10px;">
                         <div class="display-flex">
-                            <img class="avatar" src="https://placeimg.com/64/64/1">
+                            <img class="avatar" src="./assets/image/icon-chat-qw.png">
                             <div class="display-flex">
                                 <div class="lead-triangle-left"></div>
                                 <div class="msg-brd">
@@ -53,12 +53,12 @@ function openFCB(isPerspective) {
                                     </div>
                                     <div class="lead-triangle-right"></div>
                                 </div>
-                                <img class="avatar" src="https://placeimg.com/64/64/2">
+                                <!-- <img class="avatar" src="https://placeimg.com/64/64/2"> -->
                             </div>
                         </div>`,
-                `<div class="bot-msg new-msg" style="padding: 10px;">
+                        `<div class="bot-msg new-msg" style="padding: 10px;">
                             <div class="display-flex">
-                                <img class="avatar" src="https://placeimg.com/64/64/1">
+                                <img class="avatar" src="./assets/image/icon-chat-qw.png">
                                 <div class="display-flex">
                                     <div class="lead-triangle-left"></div>
                                     <div class="msg-brd">
@@ -68,21 +68,32 @@ function openFCB(isPerspective) {
                             </div>
                         </div>`];
             } else {
-                return `<div class="customer-msg new-msg">
+                return [`<div class="customer-msg new-msg">
                             <div class="display-flex justify-content-flex-end">
                                 <div class="display-flex">
                                     <div class="msg-brd">
-                                        <p>` + data.instruction.replaceAll('\n', '<br>') + `</p>
+                                        <p>` + data.title + `</p>
                                     </div>
                                     <div class="lead-triangle-right"></div>
                                 </div>
-                                <img class="avatar" src="https://placeimg.com/64/64/2">
+                                <!-- <img class="avatar" src="https://placeimg.com/64/64/2"> -->
                             </div>
-                        </div>
-                        <div class="bottom-button-area">
+                        </div>`,
+                        `<div class="bot-msg new-msg" style="padding: 10px;">
+                            <div class="display-flex">
+                                <img class="avatar" src="./assets/image/icon-chat-qw.png">
+                                <div class="display-flex">
+                                    <div class="lead-triangle-left"></div>
+                                    <div class="msg-brd">
+                                        <p>` + data.instruction.replaceAll('\n', '<br>') + `</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`,
+                        `<div class="bottom-button-area">
                             <button class="md-refresh">もう一度最初から選択する</button>
                             <button class="md-close">閉じる</button>
-                        </div>`;
+                        </div>`];
             }
         }
     }
@@ -125,7 +136,8 @@ function openFCB(isPerspective) {
         refresh = $('.md-refresh');
         if (refresh[0]) {
             refresh[0].addEventListener('click', function (ev) {
-                $('.md-modal .md-content > div').html(createBotQuestion());
+                var n = $('.md-modal .md-content > div').html().indexOf(`<div class="bottom-button-area">`);
+                $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().substring(0, n).replaceAll('new-msg', '') + createBotQuestion());
                 var options = $('button.msg-option');
                 if (options) {
                     options.each(function () {
@@ -134,6 +146,8 @@ function openFCB(isPerspective) {
                         });
                     });
                 }
+
+                $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
             });
         }
 

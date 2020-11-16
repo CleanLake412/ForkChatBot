@@ -89,8 +89,8 @@ perspective effects (not including the modals and the overlay).
     padding: 15px 15px 15px;
     margin: 0;
     font-weight: 300;
-    font-size: 0.9em;
-    color: #333333;
+    font-size: 1em;
+    color: #222222;
     overflow-y: scroll;
     height: 80vh;
     min-height: 200px;
@@ -126,16 +126,33 @@ perspective effects (not including the modals and the overlay).
     padding: 10px;
 }
 
-.new-msg {
-    animation: chat-appear 1s;
+.bot-msg.new-msg {
+    animation: chat-appear-left 0.3s;
 }
 
-@keyframes chat-appear {
+.customer-msg.new-msg {
+    animation: chat-appear-right 0.3s;
+}
+
+@keyframes chat-appear-left {
     from {
-        opacity: 0;
+        transform: scale(0, 0);
+        transform-origin: top left;
     }
     to {
-        opacity: 1;
+        transform: scale(1, 1);
+        transform-origin: top left;
+    }
+}
+
+@keyframes chat-appear-right {
+    from {
+        transform: scale(0, 0);
+        transform-origin: top right;
+    }
+    to {
+        transform: scale(1, 1);
+        transform-origin: top right;
     }
 }
 
@@ -143,6 +160,7 @@ perspective effects (not including the modals and the overlay).
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    box-shadow: 0 1px 3px;
 }
 
 .md-content button {

@@ -1,7 +1,7 @@
 
-function openFCB(isPerspective) {
+function openFCB(containerID, isPerspective) {
 
-    var modal = $('#modal-1'),
+    var modal = $('#' + containerID),
         close = $('.md-close'),
         overlay = $('.md-overlay')[0];
 
@@ -24,7 +24,7 @@ function openFCB(isPerspective) {
             hasChild = Array.isArray(childData) && childData.length > 0;
             return `<div class="bot-msg new-msg" style="padding: 10px;">
                         <div class="display-flex">
-                            <img class="avatar" src="./assets/image/icon-chat-qw.png">
+                            <div class="avatar"></div>
                             <div class="display-flex">
                                 <div class="lead-triangle-left"></div>
                                 <div class="msg-brd">
@@ -58,7 +58,7 @@ function openFCB(isPerspective) {
                         </div>`,
                         `<div class="bot-msg new-msg" style="padding: 10px;">
                             <div class="display-flex">
-                                <img class="avatar" src="./assets/image/icon-chat-qw.png">
+                                <div class="avatar"></div>
                                 <div class="display-flex">
                                     <div class="lead-triangle-left"></div>
                                     <div class="msg-brd">
@@ -81,7 +81,7 @@ function openFCB(isPerspective) {
                         </div>`,
                         `<div class="bot-msg new-msg" style="padding: 10px;">
                             <div class="display-flex">
-                                <img class="avatar" src="./assets/image/icon-chat-qw.png">
+                                <div class="avatar"></div>
                                 <div class="display-flex">
                                     <div class="lead-triangle-left"></div>
                                     <div class="msg-brd">
@@ -113,13 +113,13 @@ function openFCB(isPerspective) {
         if (Array.isArray(botQuestion)) {
             await asyncForEach(botQuestion, async function (question) {
                 await sleep(500);
-                $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + question);
-                $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
+                $('.modal-bottom-help-wrap').html($('.modal-bottom-help-wrap').html().replaceAll('new-msg', '') + question);
+                $('.md-content-box').scrollTop($('.modal-bottom-help-wrap')[0].scrollHeight);
             });
         } else {
             await sleep(500);
-            $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + botQuestion);
-            $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
+            $('.modal-bottom-help-wrap').html($('.modal-bottom-help-wrap').html().replaceAll('new-msg', '') + botQuestion);
+            $('.md-content-box').scrollTop($('.modal-bottom-help-wrap')[0].scrollHeight);
         }
 
         var options = $('button.msg-option:not(.disabled):not(.md-refresh):not(.md-close)');
@@ -147,11 +147,11 @@ function openFCB(isPerspective) {
                                         </div>
                                     </div>`, createBotQuestion()];
 
-                // $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + createBotQuestion());
+                // $('.modal-bottom-help-wrap').html($('.modal-bottom-help-wrap').html().replaceAll('new-msg', '') + createBotQuestion());
                 await asyncForEach(botQuestion, async function (question) {
                     await sleep(500);
-                    $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + question);
-                    $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
+                    $('.modal-bottom-help-wrap').html($('.modal-bottom-help-wrap').html().replaceAll('new-msg', '') + question);
+                    $('.md-content-box').scrollTop($('.modal-bottom-help-wrap')[0].scrollHeight);
                 });
 
                 var options = $('button.msg-option:not(.disabled)');
@@ -201,7 +201,7 @@ function openFCB(isPerspective) {
         }, 25);
     }
 
-    $('.md-modal .md-content > div').html(createBotQuestion());
+    $('.modal-bottom-help-wrap').html(createBotQuestion());
     var options = $('button.msg-option');
     if (options) {
         options.each(function () {

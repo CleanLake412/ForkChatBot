@@ -181,6 +181,8 @@ perspective effects (not including the modals and the overlay).
     width: 40px;
     border-radius: 50%;
     box-shadow: 0 1px 3px;
+    background: url(../image/icon-chat-qw.png);
+    background-size: cover;
 }
 
 .md-content button {
@@ -859,4 +861,9 @@ div.bottom-button-area {
     -webkit-transition: all 0.5s 0.1s;
     -moz-transition: all 0.5s 0.1s;
     transition: all 0.5s 0.1s;
+}
+
+.md-content p {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }

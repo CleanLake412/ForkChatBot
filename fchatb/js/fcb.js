@@ -86,13 +86,11 @@ function openFCB(isPerspective) {
                                     <div class="lead-triangle-left"></div>
                                     <div class="msg-brd">
                                         <p>` + data.instruction.replaceAll('\n', '<br>') + `</p>
+                                        <button class="msg-option md-refresh">もう一度最初から選択する</button>
+                                        <button class="msg-option md-close">閉じる</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>`,
-                        `<div class="bottom-button-area">
-                            <button class="md-refresh">もう一度最初から選択する</button>
-                            <button class="md-close">閉じる</button>
                         </div>`];
             }
         }
@@ -124,7 +122,7 @@ function openFCB(isPerspective) {
             $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
         }
 
-        var options = $('button.msg-option:not(.disabled)');
+        var options = $('button.msg-option:not(.disabled):not(.md-refresh):not(.md-close)');
         if (options) {
             options.each(function () {
                 $(this).click(function (ev) {
@@ -133,12 +131,30 @@ function openFCB(isPerspective) {
             });
         }
 
-        refresh = $('.md-refresh');
+        refresh = $('.md-refresh:not(.disabled)');
         if (refresh[0]) {
-            refresh[0].addEventListener('click', function (ev) {
-                var n = $('.md-modal .md-content > div').html().indexOf(`<div class="bottom-button-area">`);
-                $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().substring(0, n).replaceAll('new-msg', '') + createBotQuestion());
-                var options = $('button.msg-option');
+            refresh[0].addEventListener('click', async function (ev) {
+                disableAllOptions();
+                var botQuestion = [`<div class="customer-msg new-msg">
+                                        <div class="display-flex justify-content-flex-end">
+                                            <div class="display-flex">
+                                                <div class="msg-brd">
+                                                    <p>もう一度最初から選択する</p>
+                                                </div>
+                                                <div class="lead-triangle-right"></div>
+                                            </div>
+                                            <!-- <img class="avatar" src="https://placeimg.com/64/64/2"> -->
+                                        </div>
+                                    </div>`, createBotQuestion()];
+
+                // $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + createBotQuestion());
+                await asyncForEach(botQuestion, async function (question) {
+                    await sleep(500);
+                    $('.md-modal .md-content > div').html($('.md-modal .md-content > div').html().replaceAll('new-msg', '') + question);
+                    $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
+                });
+
+                var options = $('button.msg-option:not(.disabled)');
                 if (options) {
                     options.each(function () {
                         $(this).click(function (ev) {
@@ -146,12 +162,10 @@ function openFCB(isPerspective) {
                         });
                     });
                 }
-
-                $('.md-modal .md-content > div').scrollTop($('.md-modal .md-content > div')[0].scrollHeight);
             });
         }
 
-        close = $('.md-close');
+        close = $('.md-close:not(.disabled)');
         if (close[0]) {
             close[0].addEventListener('click', function (ev) {
                 ev.stopPropagation();

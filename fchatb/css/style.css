@@ -113,12 +113,32 @@ perspective effects (not including the modals and the overlay).
     border-radius: 5px;
 }
 
+.md-content button.msg-option.msg-option.md-refresh {
+    background: #6c2bc0;
+    color: #fff;
+}
+
+.md-content button.msg-option.msg-option.md-close {
+    background: #2b8cc0;
+    color: #fff;
+}
+
 .md-content h3 > span {
     cursor: pointer;
 }
 
 .md-content button.msg-option.disabled {
     background: #fff1e7;
+    color: #cccccc;
+}
+
+.md-content button.msg-option.msg-option.md-refresh.disabled {
+    background: #a986d6;
+    color: #cccccc;
+}
+
+.md-content button.msg-option.msg-option.md-close.disabled {
+    background: #85bad6;
     color: #cccccc;
 }
 
@@ -202,7 +222,7 @@ perspective effects (not including the modals and the overlay).
     margin-right: 5px;
 }
 
-.md-close, .md-refresh {
+/* .msg-option.md-close, .msg-option.md-refresh {
     border: none;
     padding: 1em 1.5em;
     background: #2b8cc0;
@@ -217,29 +237,12 @@ perspective effects (not including the modals and the overlay).
     border-radius: 2px;
 }
 
-.md-refresh {
+.msg-option.md-refresh {
     background: #6c2bc0;
-}
+} */
 
 div.bottom-button-area {
     margin: 20px 0;
-}
-
-@media only screen and (min-width: 768px) {
-    div.bottom-button-area {
-        display: flex;
-        justify-content: space-evenly;
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    div.bottom-button-area button {
-        width: 100%;
-    }
-
-    div.bottom-button-area button.md-refresh {
-        margin-bottom: 15px;
-    }
 }
 
 /* Individual modal styles with animations/transitions */
